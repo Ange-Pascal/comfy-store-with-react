@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+ /* creation de classe personnalisée  */
+@layer components{
+    .align-element {
+        @apply mx-auto max-w-6xl px-8;
+    }
+}
