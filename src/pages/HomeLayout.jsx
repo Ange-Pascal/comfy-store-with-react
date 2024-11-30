@@ -1,15 +1,20 @@
-import { Outlet } from "react-router-dom"; 
-import { Header, NavBar } from "../components";
+import { Outlet, useNavigation } from "react-router-dom"; 
+import { Header, NavBar, Loading } from "../components";
 
-const HomeLayout = () => {
+const HomeLayout = () => { 
+  const navigation = useNavigation();
+  const isPageLoading = navigation.state === 'loading';
   return (
     <>
       <Header /> 
       <NavBar/>
-      {/* class tailwind personnalisé */}
-      <section className="align-element py-20">
-        <Outlet />
-      </section>
+      {isPageLoading ? (
+        <Loading />
+      ) : (
+        <section className='align-element py-20'>
+          <Outlet />
+        </section>
+      )}
     </>
   );
 };
